@@ -1,6 +1,9 @@
-import  web
 
-urls  = ( '/' , 'index.Index' )
+import web
+
+urls = (
+    "/","picaduras.index.Index"
+)
 
 app = web.application(urls, globals())
 
