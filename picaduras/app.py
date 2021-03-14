@@ -2,6 +2,7 @@ import web
 import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
+from flask import Flask, render_template
 
 
 
@@ -84,31 +85,79 @@ class Upload ():
         prediction = model.predict(data)
 
         for i in prediction:
-            if i[0] > 0.7:
-                data= "Picadura de Araña\n Limpie el área con agua y jabón.Ayude a la persona a permanecer calmada para reducir la propagación del veneno; no aplique ningún torniquete. Aplique una compresa fría o una bolsa de hielo envuelta en un paño."
-                return data
-            elif i[1] > 0.7:
-                data= "Picadura de Abeja \n Lavar la zona afectada con agua y jabón.Enfriar la picadura con hielo.Aplicar un antiséptico.Nunca se debe apretar la picadura de abeja o avispa para tratar de sacar el veneno,  ya que este puede extenderse \nSe puede paliar el dolor y las molestias con una crema para el picor y un antihistamínico"
-                return data
-            elif i[2] > 0.7:
-                data="Picadura de Hormiga \n Si alguna vez crees que te ha picado una hormiga. El veneno de las picaduras de hormigas coloradas puede producir una ligera hinchazón en la zona de la picadura, y puede que el médico quiera echarle un vistazo para asegurarse de que no tienes una reacción alérgica."
-                return data
-            elif i[3] > 0.7:
-                data="Picadura de Garrapata\n Utiliza pinzas pequeñas o de punta fina para agarrar la garrapata lo más cerca posible de la piel. Saca suavemente la garrapata con un movimiento ascendente lento y constante. No la tuerzas ni la aprietes. No agarres la garrapata con las manos desprotegidas.\n Los expertos no recomiendan usar vaselina, esmalte de uñas ni cerillas (fósforos) calientes para quitar garrapatas."
-                return data
-            elif i[4] > 0.7:
-                data="Picadura de Mosquito \n Aplica loción, crema o pasta.Aplicar una loción de calamina o una crema de hidrocortisona de venta libre en la picadura puede ayudar a aliviar la picazón. O bien, prueba a untar la picadura con una pasta preparada con bicarbonato de sodio y agua. Vuelve a aplicarla varias veces al día hasta que los síntomas desaparezcan. \nAplica una compresa fría. Intenta calmar la picadura aplicando una compresa fría o un paño frío y húmedo durante unos minutos.Toma un antihistamínico oral. Para las reacciones más fuertes, prueba tomando un antihistamínico de venta libre (Benadryl, Chlor-Trimeton y otros)."
-                return data
-            elif i[5] > 0.7:
-                data="Picadura de Pulga \n Si crees que te ha picado una pulga, lava la picadura con agua y jabón. Aplica loción de calamina para aliviar la picazón, o un adulto puede conseguirte en la farmacia una crema que alivie la picazón. Trata de no rascarte demasiado porque las picaduras podrían infectarse"
-                return data
-            elif i[6] > 0.7:
-                data= "Picadura de Chinche \n Si crees que te ha picado una chinche, lava la picadura con agua y jabón y ponte loción de calamina para aliviar el picor. Un adulto te puede conseguir una crema para aliviar la picazón en una farmacia o droguería.\n Intenta rascarte la picadura lo menos posible porque se te podría infectar."
-                return data
+            if i[0] > 0.7: #araña
+               return """<html>
+                        <center>
+                        <body>
+                        <a href="https://ibb.co/myncGCD"><img src="https://i.ibb.co/NN0ys6V/ara-a-plantilla.jpg" alt="ara-a-plantilla" border="0"></a>
+                        <center><input type="button" value="REGRESAR" onClick="history.go(-1);"></center>
+                        </body>
+                        </center>
+                        </html>"""
+            elif i[1] > 0.7: #abeja
+               return """<html>
+                        <center>
+                        <body>
+                        <a href="https://ibb.co/D7pMpjg"><img src="https://i.ibb.co/tbX2X1P/abeja-plantilla.jpg" alt="abeja-plantilla" border="0"></a>
+                        <center><input type="button" value="REGRESAR" onClick="history.go(-1);"></center>
+                        </body>
+                        </center>
+                        </html>"""
+            elif i[2] > 0.7: #hormiga
+                return """<html>
+                        <center>
+                        <body>
+                        <a href="https://ibb.co/BjKNq8B"><img src="https://i.ibb.co/mtF86Q4/plantilla-hormiga.jpg" alt="plantilla-hormiga" border="0"></a>
+                        <center><input type="button" value="REGRESAR" onClick="history.go(-1);"></center>
+                        </body>
+                        </center>
+                        </html>"""
+            elif i[3] > 0.7: #garrapata
+                return """<html>
+                        <center>
+                        <body>
+                        <a href="https://ibb.co/4TFRdpG"><img src="https://i.ibb.co/swg9HqG/plantilla-garrapata.jpg" alt="plantilla-garrapata" border="0"></a>
+                        <center><input type="button" value="REGRESAR" onClick="history.go(-1);"></center>
+                        </body>
+                        </center>
+                        </html>"""
+            elif i[4] > 0.7: #mosquito
+              return """<html>
+                        <center>
+                        <body>
+                        <a href="https://ibb.co/rm8tdVn"><img src="https://i.ibb.co/xD9sFNV/mosquito-plantilla.jpg" alt="mosquito-plantilla" border="0"></a>
+                        <center><input type="button" value="REGRESAR" onClick="history.go(-1);"></center>
+                        </body>
+                        </center>
+                        </html>"""
+            elif i[5] > 0.7: #pulga
+                return """<html>
+                        <center>
+                        <body>
+                        <a href="https://ibb.co/sCyGPwP"><img src="https://i.ibb.co/r34St6t/plantilla-pulga.jpg" alt="plantilla-pulga" border="0"></a>
+                        <center><input type="button" value="REGRESAR" onClick="history.go(-1);"></center>
+                        </body>
+                        </center>
+                        </html>"""
+               
+            elif i[6] > 0.7: #chinche
+               return """<html>
+                        <center>
+                        <body>
+                        <a href="https://ibb.co/CB1PK92"><img src="https://i.ibb.co/b1Wb5vJ/plantilla-chinche.jpg" alt="plantilla-chinche" border="0"></a>
+                        <center><input type="button" value="REGRESAR" onClick="history.go(-1);"></center>
+                        </body>
+                        </center>
+                        </html>"""
             else:
-                picadura= "No se reconoce la Picadura"
-            return picadura
-
+                return """<html>
+                        <center>
+                        <body>
+                        <a href="https://ibb.co/pX7xTsT"><img src="https://i.ibb.co/gg238X8/plantilla-error.jpg" alt="plantilla-error" border="0"></a>
+                        <center><input type="button" value="REGRESAR" onClick="history.go(-1);"></center>
+                        </body>
+                        </center>
+                        </html>"""
 
 
 if __name__ == "__main__":
